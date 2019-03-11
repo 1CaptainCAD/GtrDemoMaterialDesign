@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { IGuitarBrand } from '../../guitar-info/guitar-brand';
+import { GuitarBrandService } from '../../guitar-services/guitar-brand.service';
 
 @Component({
   selector: 'app-main-content',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainContentComponent implements OnInit {
 
-  constructor() { }
+  guitarBrand: IGuitarBrand;
+
+  constructor(private route: ActivatedRoute,
+              private guitarBrandService: GuitarBrandService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(
+      params => {
+        const id = +params.id;
+        this.guitarBrandService.getGuitarBrand(id).subscribe((data: IGuitarBrand) => {
+          this.guitarBrand = data;
+        });
+      }
+    );
   }
 
 }

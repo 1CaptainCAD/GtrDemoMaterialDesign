@@ -3,15 +3,14 @@
                [opened]="!isScreenSmall()"
                [mode]="isScreenSmall() ? 'over' : 'side'">
     <mat-toolbar color="primary">Brands</mat-toolbar>
-    <mat-list>
-      <mat-list-item>Martin</mat-list-item>
-      <mat-list-item>Taylor</mat-list-item>
-      <mat-list-item>Fender</mat-list-item>
-      <mat-list-item>Gibson</mat-list-item>
-      <mat-list-item>Yamaha</mat-list-item>
-    </mat-list>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let brand of guitarBrands">
+        <a matLine [routerLink]="['/guitarmanager', brand.id]">
+          {{ brand.brandName }}
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
   </mat-sidenav>
-
   <div class="app-sidenav-content">
     <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
     <div class="wrapper">

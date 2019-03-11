@@ -1,0 +1,71 @@
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { Subscription } from 'rxjs';
+
+import { IGuitar } from '../guitar-info/guitar';
+import { IGuitarBrand } from '../guitar-info/guitar-brand';
+import { GuitarBrandService } from '../guitar-services/guitar-brand.service';
+import { GuitarService } from '../guitar-services/guitar.service';
+
+@Component({
+  selector: 'app-guitar-data-table',
+  templateUrl: './guitar-data-table.component.html',
+  styleUrls: ['./guitar-data-table.component.scss']
+})
+export class GuitarDataTableComponent implements OnInit, OnDestroy {
+
+  displayedColumns = ['model', 'price', 'type', 'description', 'rating'];
+  dataSource: MatTableDataSource<IGuitar>;
+  errorMessage: string;
+  filteredGuitars: IGuitar[] | null;
+  guitars: IGuitar[] | null;
+  selectedBrand: IGuitarBrand | null;
+  sub: Subscription;
+
+
+  constructor(private guitarService: GuitarService,
+              private guitarBrandService: GuitarBrandService) { }
+
+  ngOnInit() {
+
+    this.sub = this.guitarBrandService.selectedBrandChanges$.subscribe(
+      selectedBrand => {
+        this.selectedBrand = selectedBrand;
+        this.filterGuitars(selectedBrand);
+      }
+    );
+
+    this.guitarService.getGuitars().subscribe(
+      (data: IGuitar[]) => {
+        this.guitars = data;
+        // this.filteredGuitars = data;
+        console.log(data);
+      },
+      (error: any) => this.errorMessage = error as any
+    );
+
+    this.dataSource = new MatTableDataSource<IGuitar>(this.guitars);
+
+
+    if (this.errorMessage) {
+      console.log(this.errorMessage);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  private filterGuitars(selectedBrand?: IGuitarBrand): void {
+    if (selectedBrand && this.guitars) {
+      this.filteredGuitars = this.guitars.filter(guitar => {
+        if (guitar.brandId === selectedBrand.id) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+  }
+
+}

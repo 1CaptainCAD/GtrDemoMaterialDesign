@@ -1,0 +1,38 @@
+<div class="example-container mat-elevation-z4">
+  <mat-table #table [dataSource]="dataSource" class="mat-elevation-z4">
+
+    <ng-container matColumnDef="model">
+      <mat-header-cell *matHeaderCellDef> Model </mat-header-cell>
+      <mat-cell *matCellDef="let guitar"> {{guitar.modelNumber}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let guitar"> {{guitar.price}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let guitar"> {{guitar.guitarType}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let guitar"> {{guitar.description}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rating">
+      <mat-header-cell *matHeaderCellDef> Rating </mat-header-cell>
+      <mat-cell *matCellDef="let guitar"> {{guitar.rating}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+</div>
+
+
