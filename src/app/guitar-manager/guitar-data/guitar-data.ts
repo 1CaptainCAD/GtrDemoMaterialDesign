@@ -67,7 +67,7 @@ export class GuitarData implements InMemoryDbService {
         numberOfStrings: 6,
         numberOfFrets: 20,
         scaleLength: 25.5,
-        modelNumber: 'LX1E',
+        modelNumber: '914ce',
         price: 4999.00,
         description: 'Top of the line Taylor guitar',
         rating: 5,

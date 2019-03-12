@@ -59,4 +59,8 @@ export class SideNavComponent implements OnInit, OnDestroy {
   isScreenSmall(): boolean {
     return this.mediaMatcher.matches;
   }
+
+  onSelected(brand: IGuitarBrand) {
+    this.guitarBrandService.changeSelectedBrand(brand);
+  }
 }

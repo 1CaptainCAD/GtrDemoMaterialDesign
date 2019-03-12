@@ -12,6 +12,8 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { GuitarBrandService} from './guitar-services/guitar-brand.service';
 import { GuitarService } from './guitar-services/guitar.service';
 import { GuitarDataTableComponent } from './guitar-data-table/guitar-data-table.component';
+import { StarComponent } from '../shared/star.component';
+import { GuitarDetailComponent } from './guitar-detail/guitar-detail.component';
 
 const routes: Routes = [
   {path: '', component: GuitarManagerAppComponent,
@@ -29,7 +31,10 @@ const routes: Routes = [
     ToolbarComponent,
     MainContentComponent,
     SideNavComponent,
-    GuitarDataTableComponent],
+    GuitarDataTableComponent,
+    StarComponent,
+    GuitarDetailComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,

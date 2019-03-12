@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { IGuitar } from '../guitar-info/guitar';
 import { IGuitarBrand } from '../guitar-info/guitar-brand';
 import { GuitarBrandService } from '../guitar-services/guitar-brand.service';
 import { GuitarService } from '../guitar-services/guitar.service';
+import { GuitarDetailComponent } from '../guitar-detail/guitar-detail.component';
 
 @Component({
   selector: 'app-guitar-data-table',
@@ -14,8 +14,7 @@ import { GuitarService } from '../guitar-services/guitar.service';
 })
 export class GuitarDataTableComponent implements OnInit, OnDestroy {
 
-  displayedColumns = ['model', 'price', 'type', 'description', 'rating'];
-  dataSource: MatTableDataSource<IGuitar>;
+  displayedColumns = ['model', 'price', 'type', 'description', 'rating', 'id'];
   errorMessage: string;
   filteredGuitars: IGuitar[] | null;
   guitars: IGuitar[] | null;
@@ -44,9 +43,6 @@ export class GuitarDataTableComponent implements OnInit, OnDestroy {
       (error: any) => this.errorMessage = error as any
     );
 
-    this.dataSource = new MatTableDataSource<IGuitar>(this.guitars);
-
-
     if (this.errorMessage) {
       console.log(this.errorMessage);
     }
@@ -67,5 +63,4 @@ export class GuitarDataTableComponent implements OnInit, OnDestroy {
       });
     }
   }
-
 }

@@ -5,7 +5,9 @@
     <mat-toolbar color="primary">Brands</mat-toolbar>
     <mat-nav-list>
       <mat-list-item *ngFor="let brand of guitarBrands">
-        <a matLine [routerLink]="['/guitarmanager', brand.id]">
+        <a matLine
+           (click)="onSelected(brand)"
+           [routerLink]="['/guitarmanager', brand.id]">
           {{ brand.brandName }}
         </a>
       </mat-list-item>
