@@ -5,4 +5,17 @@
   </button>
 
   <span>Guitar Wish List</span>
+
+  <span class="example-spacer"></span>
+
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item
+            (click)="openAddGuitarDialog()">
+      Add Guitar
+    </button>
+  </mat-menu>
+
 </mat-toolbar>

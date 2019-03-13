@@ -14,6 +14,8 @@ import { GuitarService } from './guitar-services/guitar.service';
 import { GuitarDataTableComponent } from './guitar-data-table/guitar-data-table.component';
 import { StarComponent } from '../shared/star.component';
 import { GuitarDetailComponent } from './guitar-detail/guitar-detail.component';
+import { GuitarAddDialogComponent } from './guitar-add-dialog/guitar-add-dialog.component';
+import { GuitarEditDialogComponent } from './guitar-edit-dialog/guitar-edit-dialog.component';
 
 const routes: Routes = [
   {path: '', component: GuitarManagerAppComponent,
@@ -33,7 +35,9 @@ const routes: Routes = [
     SideNavComponent,
     GuitarDataTableComponent,
     StarComponent,
-    GuitarDetailComponent
+    GuitarDetailComponent,
+    GuitarAddDialogComponent,
+    GuitarEditDialogComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,9 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   entryComponents: [
-    GuitarDetailComponent
+    GuitarDetailComponent,
+    GuitarAddDialogComponent,
+    GuitarEditDialogComponent
   ],
   providers: [
     GuitarBrandService,

@@ -1,4 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
+import { GuitarAddDialogComponent } from '../../guitar-add-dialog/guitar-add-dialog.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,9 +11,14 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class ToolbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  openAddGuitarDialog() {
+    this.dialog.open(GuitarAddDialogComponent, {
+      width: '450px'
+    });
+  }
 }

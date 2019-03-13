@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MatBottomSheet } from '@angular/material';
+import { MatBottomSheet, MatDialog } from '@angular/material';
 
 import { IGuitar } from '../guitar-info/guitar';
 import { IGuitarBrand } from '../guitar-info/guitar-brand';
 import { GuitarBrandService } from '../guitar-services/guitar-brand.service';
 import { GuitarService } from '../guitar-services/guitar.service';
 import { GuitarDetailComponent } from '../guitar-detail/guitar-detail.component';
+import { GuitarEditDialogComponent } from '../guitar-edit-dialog/guitar-edit-dialog.component';
 
 @Component({
   selector: 'app-guitar-data-table',
@@ -22,10 +23,10 @@ export class GuitarDataTableComponent implements OnInit, OnDestroy {
   selectedBrand: IGuitarBrand | null;
   sub: Subscription;
 
-
   constructor(private guitarService: GuitarService,
               private guitarBrandService: GuitarBrandService,
-              private bottomSheet: MatBottomSheet) { }
+              private bottomSheet: MatBottomSheet,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -69,6 +70,12 @@ export class GuitarDataTableComponent implements OnInit, OnDestroy {
   openBottomSheet(guitar: IGuitar) {
     this.bottomSheet.open(GuitarDetailComponent, {
       data: {guitar}
+    });
+  }
+
+  openEditGuitarDialog(): void {
+    this.dialog.open(GuitarEditDialogComponent, {
+      width: '450px'
     });
   }
 }

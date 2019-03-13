@@ -44,7 +44,9 @@
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let guitar">
         <button mat-stroked-button
-                color="primary"> Edit </button>
+                color="primary"
+                (click)="openEditGuitarDialog()"
+        > Edit </button>
       </mat-cell>
     </ng-container>
 
