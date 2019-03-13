@@ -1,3 +1,51 @@
-<p>
-  guitar-detail works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Guitar Details - TODO: Finish styling</mat-card-title>
+    <mat-card-subtitle>Model # {{data.guitar.modelNumber}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="2" gutterSize="10px">
+      <mat-grid-tile>
+        <div>
+          <span>Model: </span>
+          <span>{{data.guitar.modelNumber}}</span>
+        </div>
+        <div>
+          <span>Guitar Type: </span>
+          <span>{{data.guitar.modelNumber === 1 ? 'Acoustic' : 'Electric'}}</span>
+        </div>
+        <div>
+          <span>Price: </span>
+          <span>{{data.guitar.price | currency:'USD':'symbol':'1.2-2'}}</span>
+        </div>
+        <div>
+          <span>Strings: </span>
+          <span>{{data.guitar.stringType}}</span>
+        </div>
+        <div>
+          <span>Strings Qty: </span>
+          <span>{{data.guitar.numberOfStrings}}</span>
+        </div>
+        <div>
+          <span>Frets: </span>
+          <span>{{data.guitar.numberOfFrets}}</span>
+        </div>
+        <div>
+          <span>Scale length: </span>
+          <span>{{data.guitar.scaleLength}}</span>
+        </div>
+        <div>
+          <span>Description: </span>
+          <span>{{data.guitar.description}}</span>
+        </div>
+        <div>
+          <span>Rating: </span>
+          <span>{{data.guitar.rating}}</span>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <img mat-card-image src="{{'assets/images/' + data.guitar.imageUrl}}">
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

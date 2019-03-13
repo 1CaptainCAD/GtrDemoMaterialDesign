@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MatBottomSheet } from '@angular/material';
 
 import { IGuitar } from '../guitar-info/guitar';
 import { IGuitarBrand } from '../guitar-info/guitar-brand';
@@ -23,7 +24,8 @@ export class GuitarDataTableComponent implements OnInit, OnDestroy {
 
 
   constructor(private guitarService: GuitarService,
-              private guitarBrandService: GuitarBrandService) { }
+              private guitarBrandService: GuitarBrandService,
+              private bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
 
@@ -62,5 +64,11 @@ export class GuitarDataTableComponent implements OnInit, OnDestroy {
         }
       });
     }
+  }
+
+  openBottomSheet(guitar: IGuitar) {
+    this.bottomSheet.open(GuitarDetailComponent, {
+      data: {guitar}
+    });
   }
 }

@@ -6,7 +6,9 @@
       <mat-cell *matCellDef="let guitar">
         <button mat-stroked-button
                 color="primary"
-                title='Display guitar details.'>
+                title='Display guitar details.'
+                (click)="openBottomSheet(guitar)"
+        >
           {{guitar.modelNumber}}
         </button>
       </mat-cell>

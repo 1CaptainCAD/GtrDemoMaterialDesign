@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import { MAT_BOTTOM_SHEET_DATA } from '@angular/material';
+import {IGuitar} from '../guitar-info/guitar';
 
 @Component({
   selector: 'app-guitar-detail',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuitarDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: IGuitar) { }
 
   ngOnInit() {
   }

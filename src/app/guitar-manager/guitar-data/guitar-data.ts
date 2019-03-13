@@ -29,7 +29,7 @@ export class GuitarData implements InMemoryDbService {
         price: 9429.00,
         description: 'Top of the line Martin guitar',
         rating: 5,
-        imageUrl: '../../../assets/Images/MartinGuitar.jpg'
+        imageUrl: 'MartinGuitar.jpg'
       },
       {
         id: 2,
@@ -43,7 +43,7 @@ export class GuitarData implements InMemoryDbService {
         price: 1499.00,
         description: 'Natural finish mid level professional guitar',
         rating: 4.5,
-        imageUrl: '../../../assets/Images/MartinGuitar.jpg'
+        imageUrl: 'MartinGuitar.jpg'
       },
       {
         id: 3,
@@ -57,7 +57,7 @@ export class GuitarData implements InMemoryDbService {
         price: 439.00,
         description: 'Little Martin guitar for beginners',
         rating: 3.5,
-        imageUrl: '../../../assets/Images/MartinGuitar.jpg'
+        imageUrl: 'MartinGuitar.jpg'
       },
       {
         id: 4,
@@ -71,7 +71,7 @@ export class GuitarData implements InMemoryDbService {
         price: 4999.00,
         description: 'Top of the line Taylor guitar',
         rating: 5,
-        imageUrl: '../../../assets/Images/TaylorGuitar.png'
+        imageUrl: 'TaylorGuitar.png'
       },
       {
         id: 5,
@@ -85,7 +85,7 @@ export class GuitarData implements InMemoryDbService {
         price: 1399.00,
         description: 'Middle of the road Taylor guitar',
         rating: 3,
-        imageUrl: '../../../assets/Images/TaylorGuitar.png'
+        imageUrl: 'TaylorGuitar.png'
       },
       {
         id: 6,
@@ -99,7 +99,7 @@ export class GuitarData implements InMemoryDbService {
         price: 1099.00,
         description: 'Classic Fender Strat',
         rating: 5,
-        imageUrl: '../../../assets/Images/FenderStrat.jpg'
+        imageUrl: 'FenderStrat.jpg'
       },
       {
         id: 7,
@@ -113,7 +113,7 @@ export class GuitarData implements InMemoryDbService {
         price: 859.00,
         description: 'Classic Fender Tele',
         rating: 5,
-        imageUrl: '../../../assets/Images/FenderTele.jpg'
+        imageUrl: 'FenderTele.jpg'
       },
       {
         id: 8,
@@ -127,7 +127,7 @@ export class GuitarData implements InMemoryDbService {
         price: 1299.00,
         description: 'Classic Gibson Les Paul',
         rating: 5,
-        imageUrl: '../../../assets/Images/GibsonLesPaul.jpg'
+        imageUrl: 'GibsonLesPaul.jpg'
       },
       {
         id: 9,
@@ -141,7 +141,7 @@ export class GuitarData implements InMemoryDbService {
         price: 1099.00,
         description: 'Classic Gibson SG',
         rating: 5,
-        imageUrl: '../../../assets/Images/GibsonSG.jpg'
+        imageUrl: 'GibsonSG.jpg'
       },
       {
         id: 10,
@@ -155,7 +155,7 @@ export class GuitarData implements InMemoryDbService {
         price: 469.00,
         description: 'Yamaha Dreadnought cutaway natural',
         rating: 3,
-        imageUrl: '../../../assets/Images/YamahaAcoustic.jpg'
+        imageUrl: 'YamahaAcoustic.jpg'
       },
       {
         id: 11,
@@ -169,7 +169,7 @@ export class GuitarData implements InMemoryDbService {
         price: 899.00,
         description: 'Yamaha jumbo guitar natural',
         rating: 4,
-        imageUrl: '../../../assets/Images/YamahaAcoustic.jpg'
+        imageUrl: 'YamahaAcoustic.jpg'
       }
     ];
     return {brands, guitars};
