@@ -17,8 +17,12 @@ export class ToolbarComponent implements OnInit {
   }
 
   openAddGuitarDialog() {
-    this.dialog.open(GuitarAddDialogComponent, {
+    const dialogRef = this.dialog.open(GuitarAddDialogComponent, {
       width: '450px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
     });
   }
 }

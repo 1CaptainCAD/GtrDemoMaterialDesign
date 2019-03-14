@@ -73,9 +73,9 @@ export class GuitarDataTableComponent implements OnInit, OnDestroy {
     });
   }
 
-  openEditGuitarDialog(): void {
+  openEditGuitarDialog(guitar: IGuitar): void {
     this.dialog.open(GuitarEditDialogComponent, {
-      width: '450px'
+      width: '450px', data: {guitar}
     });
   }
 }
