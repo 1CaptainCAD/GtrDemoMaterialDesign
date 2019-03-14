@@ -1,23 +1,25 @@
 <h2 mat-dialog-title>Edit Guitar</h2>
 <mat-dialog-content>
   <div class="example-container">
-    <p>{{data.guitar | json}}</p>
     <mat-form-field>
       <input matInput type="number" placeholder="Price"
-             [formControl]="price">
+             [formControl]="price"
+             [(ngModel)]="data.guitar.price">
       <mat-error *ngIf="price.invalid">Price is required.</mat-error>
       <span matPrefix>$&nbsp;</span>
     </mat-form-field>
     <mat-form-field hintLabel="Max 100 characters">
       <textarea [formControl]="description" matInput placeholder="Description"
-                maxlength="100"
+                maxlength="100" [(ngModel)]="data.guitar.description"
       ></textarea>
       <mat-hint align="end">{{description.value?.length || 0}}/100</mat-hint>
       <mat-error *ngIf="description.invalid">Description is required.</mat-error>
     </mat-form-field>
     <mat-form-field hintLabel="Range {{minNum}} to {{maxNum}}">
       <input matInput type="number" placeholder="Rating"
-             [formControl]="rating" min="{{minNum}}" max="{{maxNum}}">
+             [formControl]="rating" min="{{minNum}}" max="{{maxNum}}"
+             [(ngModel)]="data.guitar.rating"
+      >
       <mat-error *ngIf="rating.invalid">Rating is required.</mat-error>
     </mat-form-field>
   </div>

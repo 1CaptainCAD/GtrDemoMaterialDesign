@@ -1,7 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import {MAT_BOTTOM_SHEET_DATA, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {IGuitar} from '../guitar-info/guitar';
+import { MAT_BOTTOM_SHEET_DATA, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+
+import { IGuitar } from '../guitar-info/guitar';
+import {GuitarService} from '../guitar-services/guitar.service';
 
 @Component({
   selector: 'app-guitar-edit-dialog',
@@ -16,13 +18,23 @@ export class GuitarEditDialogComponent implements OnInit {
   price = new FormControl('0', [Validators.required]);
   description = new FormControl('', [Validators.required]);
   rating = new FormControl('',
-    [Validators.required, Validators.min(this.minNum), Validators.max(this.maxNum)]);
+    [Validators.required,
+      Validators.min(this.minNum), Validators.max(this.maxNum)]);
 
   constructor(private dialogRef: MatDialogRef<GuitarEditDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: IGuitar) { }
+              @Inject(MAT_DIALOG_DATA) public data: IGuitar,
+              private guitarService: GuitarService) { }
 
   ngOnInit() {
 
   }
 
+  save() {
+    this.guitarService.saveGuitar(this.data).subscribe();
+    this.dialogRef.close(this.data);
+  }
+
+  dismiss() {
+    this.dialogRef.close(null);
+  }
 }
