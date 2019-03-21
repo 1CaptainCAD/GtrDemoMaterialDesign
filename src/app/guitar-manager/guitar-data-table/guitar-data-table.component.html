@@ -1,3 +1,12 @@
+<!--<div *ngIf="!guitarBrand">-->
+<!--<mat-spinner></mat-spinner>-->
+<!--</div>-->
+<mat-card>
+<mat-card-header>
+<mat-card-title>{{guitarBrand?.brandName}} Guitars</mat-card-title>
+</mat-card-header>
+<mat-card-content>
+
 <div class="example-container mat-elevation-z0">
   <mat-table #table [dataSource]="filteredGuitars" class="mat-elevation-z0">
 
@@ -43,10 +52,7 @@
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let guitar">
-        <button mat-stroked-button
-                color="primary"
-                (click)="openEditGuitarDialog(guitar)"
-        > Edit </button>
+        <a [routerLink]="['/guitarmanager/brand', guitar.brandId, 'edit',  guitar.id]" mat-stroked-button> Edit </a>
       </mat-cell>
     </ng-container>
 
@@ -57,3 +63,5 @@
 </div>
 
 
+</mat-card-content>
+</mat-card>

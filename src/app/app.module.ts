@@ -16,11 +16,11 @@ import { GuitarData } from './guitar-manager/guitar-data/guitar-data';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(GuitarData),
     MatButtonModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

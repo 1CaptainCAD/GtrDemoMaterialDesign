@@ -20,11 +20,12 @@ import { GuitarEditDialogComponent } from './guitar-edit-dialog/guitar-edit-dial
 const routes: Routes = [
   {path: '', component: GuitarManagerAppComponent,
     children: [
-      {path: ':id', component: MainContentComponent},
+      {path: 'brand/:id', component: GuitarDataTableComponent},
+      {path: 'brand/:id/edit/:gid', component: GuitarEditDialogComponent},
       {path: '', component: MainContentComponent}
       ]
   },
-  {path: '**', redirectTo: ''}
+  {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -48,9 +49,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   entryComponents: [
-    GuitarDetailComponent,
-    GuitarAddDialogComponent,
-    GuitarEditDialogComponent
+    GuitarDetailComponent
   ],
   providers: [
     GuitarBrandService,

@@ -30,7 +30,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.guitarBrandService.selectedBrandChanges$.subscribe(
-      selectedBrand => this.selectedBrand = selectedBrand
+       selectedBrand => this.selectedBrand = selectedBrand
     );
 
     this.guitarBrandService.getGuitarBrands().subscribe(
@@ -38,9 +38,9 @@ export class SideNavComponent implements OnInit, OnDestroy {
         this.guitarBrands = data;
         // console.log(data);
 
-        if (data.length > 0) {
-          this.router.navigate(['/guitarmanager', data[0].id]);
-        }
+        // if (data.length > 0) {
+        //   this.router.navigate(['/guitarmanager', data[0].id]);
+        // }
       },
       (error: any) => this.errorMessage = error as any
     );

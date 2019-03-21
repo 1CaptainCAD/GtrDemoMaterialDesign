@@ -13,18 +13,21 @@ export class MainContentComponent implements OnInit {
 
   guitarBrand: IGuitarBrand;
 
-  constructor(private route: ActivatedRoute,
-              private guitarBrandService: GuitarBrandService) { }
+  constructor() { }
+
+
+  // constructor(private route: ActivatedRoute,
+  //             private guitarBrandService: GuitarBrandService) { }
 
   ngOnInit() {
-    this.route.params.subscribe(
-      params => {
-        const id = +params.id;
-        this.guitarBrandService.getGuitarBrand(id).subscribe((data: IGuitarBrand) => {
-          this.guitarBrand = data;
-        });
-      }
-    );
+    // this.route.params.subscribe(
+    //   params => {
+    //     const id = +params.id;
+    //     this.guitarBrandService.getGuitarBrand(id).subscribe((data: IGuitarBrand) => {
+    //       this.guitarBrand = data;
+    //     });
+    //   }
+    // );
   }
 
 }

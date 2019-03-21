@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-guitar-manager-app',
   template: `
     <app-side-nav></app-side-nav>
   `,
