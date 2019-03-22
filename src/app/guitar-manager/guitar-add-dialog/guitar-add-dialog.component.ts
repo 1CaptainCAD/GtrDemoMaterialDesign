@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 import { IGuitar } from '../guitar-info/guitar';
 import { GuitarBrandService } from '../guitar-services/guitar-brand.service';
@@ -32,7 +33,8 @@ export class GuitarAddDialogComponent implements OnInit {
 
   constructor(private guitarBrandService: GuitarBrandService,
               private guitarService: GuitarService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private location: Location) { }
 
   ngOnInit() {
     this.guitarBrandService.getGuitarBrands().subscribe(
@@ -88,17 +90,32 @@ export class GuitarAddDialogComponent implements OnInit {
 
   }
 
-
-  addGuitar() {
-
+  addGuitar(): void {
+    if (this.addNewGuitarForm.valid) {
+      if (this.addNewGuitarForm.dirty) {
+        this.guitar.brandId = this.guitarBrand.id;
+        const g = {...this.guitar, ...this.addNewGuitarForm.value};
+        this.guitarService.saveGuitar(g).subscribe(
+          () => {
+            this.onAddComplete();
+          },
+          (error: any) => this.errorMessage = error as any
+        );
+      } else {
+        this.onAddComplete();
+      }
+    } else {
+      this.errorMessage = 'Please correct validation errors.';
+    }
   }
 
   onCancel() {
-
+    this.location.back();
   }
 
-  onBrand() {
-
+  private onAddComplete(): void {
+    this.addNewGuitarForm.reset(this.addNewGuitarForm.value);
+    this.location.back();
   }
 
   public hasError(controlName: string, errorName: string) {

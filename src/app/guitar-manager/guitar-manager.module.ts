@@ -49,6 +49,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
+  entryComponents: [
+    GuitarDetailComponent
+  ],
   providers: [
     GuitarBrandService,
     GuitarService
