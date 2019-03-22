@@ -12,8 +12,7 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item
-            (click)="openAddGuitarDialog()">
+    <button mat-menu-item [routerLink]="['/guitarmanager/guitar/add']">
       Add Guitar
     </button>
   </mat-menu>

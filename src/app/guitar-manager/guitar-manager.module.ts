@@ -22,6 +22,7 @@ const routes: Routes = [
     children: [
       {path: 'brand/:id', component: GuitarDataTableComponent},
       {path: 'brand/:id/edit/:gid', component: GuitarEditDialogComponent},
+      {path: 'guitar/add', component: GuitarAddDialogComponent},
       {path: '', component: MainContentComponent}
       ]
   },
@@ -47,9 +48,6 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
-  ],
-  entryComponents: [
-    GuitarDetailComponent
   ],
   providers: [
     GuitarBrandService,

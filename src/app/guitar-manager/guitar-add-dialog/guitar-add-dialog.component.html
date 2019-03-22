@@ -1,27 +1,155 @@
-<h2 mat-dialog-title>Add New Guitar</h2>
-<mat-dialog-content>
-  <div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="Input">
-    </mat-form-field>
+<section fxlayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="900px" fxFlex.xs="100%">
+    <mat-card-title>Add Guitar</mat-card-title>
+    <mat-card-subtitle>{{pageSubTitle}}</mat-card-subtitle>
+    <form [formGroup]="addNewGuitarForm"
+          autocomplete="off"
+          novalidate
+          (ngSubmit)="addGuitar()"
+          fxlayout="column wrap"
+          fxlayoutalign="center center"
+          fxLayoutGap="10px">
+      <mat-card-content>
 
-    <mat-form-field>
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
+        <mat-grid-list cols="3" rowHeight="300px">
+          <mat-grid-tile>
+            <div fxLayout="column">
 
-    <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+              <mat-form-field>
+                <mat-label >Brand</mat-label>
+                <mat-select id="guitarBrandId"
+                            formControlName="brandId"
+                            (click)="onBrand()">
+                  <mat-option *ngFor="let brand of guitarBrands" [value]="brand.id">{{brand.brandName}}</mat-option>
+                </mat-select>
+              </mat-form-field>
 
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button color="primary" (click)="save()">
-    <mat-icon>save</mat-icon> Save
-  </button>
-  <button mat-button color="primary" (click)="dismiss()">
-    <mat-icon>cancel</mat-icon> Cancel
-  </button>
-</mat-dialog-actions>
+              <mat-form-field>
+                <input matInput
+                       placeholder="Model# (required)"
+                       type="text"
+                       id="guitarModelId"
+                       formControlName="modelNumber"
+                       maxlength="15"
+                >
+              </mat-form-field>
+
+              <mat-radio-group aria-label="Guitar type" formControlName="guitarType">
+                <div fxLayout="column">
+                  <mat-label>Guitar type</mat-label>
+                  <mat-radio-button value="1"
+                                    name="guitarType"
+                                    checked="true"
+                                    id="guitarTypeAccId">
+                    Acoustic
+                  </mat-radio-button>
+                  <mat-radio-button value="2"
+                                    name="guitarType"
+                                    id="guitarTypeElecId">
+                    Electric
+                  </mat-radio-button>
+                </div>
+              </mat-radio-group>
+
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div fxLayout="column">
+
+              <mat-form-field>
+                <input matInput type="number"
+                       placeholder="Price"
+                       formControlName="price"
+                       id="priceId">
+                <mat-error *ngIf="hasError('price', 'required')">Price is required.</mat-error>
+                <span matPrefix>$&nbsp;</span>
+              </mat-form-field>
+
+              <mat-form-field hintLabel="Max 100 characters">
+                <textarea formControlName="description" matInput placeholder="Description"
+                          maxlength="100"
+                ></textarea>
+                <mat-hint align="end">{{addNewGuitarForm.get('description').value?.length || 0}}/100</mat-hint>
+                <mat-error *ngIf="hasError('description', 'required')">Description is required.</mat-error>
+              </mat-form-field>
+
+              <mat-form-field hintLabel="Range {{minRatingNum}} to {{maxRatingNum}}">
+                <input matInput
+                       type="number"
+                       placeholder="Rating"
+                       formControlName="rating" min="{{minRatingNum}}" max="{{maxRatingNum}}">
+                <mat-error *ngIf="hasError('rating', 'required')">Rating is required.</mat-error>
+                <mat-error *ngIf="hasError('rating', 'min')">Range is {{minRatingNum}} to {{maxRatingNum}}.</mat-error>
+                <mat-error *ngIf="hasError('rating', 'max')">Range is {{minRatingNum}} to {{maxRatingNum}}.</mat-error>
+              </mat-form-field>
+
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+
+            <mat-radio-group aria-label="String type" formControlName="stringType">
+              <div fxLayout="column">
+                <mat-label>String type</mat-label>
+                <mat-radio-button value="1"
+                                  name="stringType"
+                                  checked="true"
+                                  id="guitarStringTypeStlId">
+                  Steel
+                </mat-radio-button>
+                <mat-radio-button value="2"
+                                  name="guitarType"
+                                  id="guitarStringTypeNylId">
+                  Nylon
+                </mat-radio-button>
+
+                <mat-form-field>
+                  <input matInput
+                         placeholder="Strings (required)"
+                         type="number"
+                         id="guitarStringQtyId"
+                         formControlName="numberOfStrings"
+                         min="{{minStringQty}}" max="{{maxStringQty}}"
+                  >
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput
+                         placeholder="Fret qty (required)"
+                         type="number"
+                         id="guitarFretsId"
+                         min="{{minFretQty}}" max="{{maxFretQty}}"
+                         formControlName="numberOfFrets"
+                         maxlength="15"
+                  >
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput
+                         placeholder="Scale length (required)"
+                         type="number"
+                         id="guitarScaleLengthId"
+                         formControlName="scaleLength"
+                         min="{{minScaleLength}}" max="{{maxScaleLength}}"
+                  >
+                </mat-form-field>
+
+              </div>
+            </mat-radio-group>
+
+          </mat-grid-tile>
+        </mat-grid-list>
+        <mat-divider></mat-divider>
+      </mat-card-content>
+
+      <mat-card-actions align="center">
+        <button mat-button color="primary" [disabled]="true">
+          <mat-icon>save</mat-icon> Save
+        </button>
+        <button mat-button color="primary" (click)="onCancel()">
+          <mat-icon>cancel</mat-icon> Cancel
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>
+
